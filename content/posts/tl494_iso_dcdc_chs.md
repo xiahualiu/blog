@@ -1,7 +1,10 @@
 ---
-title: "基于 TL494 的隔离推挽DC/DC设计"
-date: "2022-08-09"
-draft: false
+title: "基于 TL494 的隔离推挽DC/DC转换器设计"
+description: "本文搭建了一个基于TL494的参考电路，讨论隔离推挽DC/DC转换器电路的结构设计，参数计算，和电路设计中需要注意的几个要点。"
+date: 2022-08-10T01:06:00
+featured_image: "images/tl494/TL494_diagram.gif"
+tags: [DC/DC Converter, Hardware]
+categories: Power Supply
 ---
 
 本文将会讨论一种基于 TL494 的隔离推挽类型的 DC/DC 转换器设计。

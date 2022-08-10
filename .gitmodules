@@ -4,3 +4,6 @@
 [submodule "themes/minimal_hugo"]
 	path = themes/minimal_hugo
 	url = git@github.com:xiahualiu/minimal_hugo.git
+[submodule "themes/diary"]
+	path = themes/diary
+	url = https://github.com/AmazingRise/hugo-theme-diary.git

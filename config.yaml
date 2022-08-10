@@ -1,0 +1,17 @@
+baseURL: https://xiahualiu.github.io
+title: Xiahua
+theme: minimal_hugo
+publishDir: "../xiahualiu.github.io"
+disableHugoGeneratorInject : true
+enableRobotsTXT : true
+ignoreErrors : error-remote-getjson
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 1
+    - name: Posts
+      url: /posts/
+      weight: 2
+

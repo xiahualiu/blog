@@ -1,6 +1,7 @@
 +++
-aliases = ["posts", "articles", "blog", "showcase", "docs"]
 title = "Posts"
-author = "Hugo Authors"
+date = "2023-07-16"
+author = "Xiahua Liu"
 tags = ["index"]
+categories = ["index"]
 +++

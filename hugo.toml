@@ -1,0 +1,19 @@
+baseURL = "https://xiahualiu.github.io"
+DefaultContentLanguage = "en" # Theme's display language, supports: en, fr, zh, zh-hant
+languageCode = "en-us"
+title = "Xiahua 夏华"
+copyright = "CC BY 4.0"
+publishDir = "../xiahualiu.github.io"
+theme = "hugo-flex"
+author = "Xiahua Liu"
+enableRobotsTXT = "true"
+# googleAnalytics = "UA-123-45"
+
+[params]
+color = 'navy'
+summaries = 'false'
+schema = 'true'
+opengraph = 'true'
+
+[params.utterances]
+repo = 'https://github.com/xiahualiu/blog'

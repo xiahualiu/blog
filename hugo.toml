@@ -17,3 +17,8 @@ opengraph = 'true'
 
 [params.utterances]
 repo = 'https://github.com/xiahualiu/blog'
+
+[[menu.nav]]
+name = "Posts"
+url = "posts/"
+weight = 2

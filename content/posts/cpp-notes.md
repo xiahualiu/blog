@@ -63,3 +63,30 @@ if (a-b < TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
 ```
 
 By specifying an extra `TOLERANCE` value, the float comparison can now be done safely and the comparing result will be predicatable according to the requirements.
+
+## Add Suffix (or Prefix) to Literals
+
+This is very important because if you don't the compiler only uses the default types (`int` for integer literals and `double` for float literals). This could cause unwanted results:
+
+```cpp
+unsigned char a = 1;
+unsigned char b = 3;
+if (a+1 > b); // Compiler Warning: Compare unsigned to signed type.
+```
+
+The compiler will warn you about comparing a unsigned value to a signed value because `a+1` will be `int` instead of `unsigned char` anymore.
+
+```cpp
+unsigned char a = 1;
+unsigned char b = 3;
+if (a+1u > b); // No Compiler Warning, you did a great job!
+```
+
+Always put suffix to numeric literals, C++ is a strong type language, you should always explicitly declare types not only the variables but also those literals.
+
+The list of available suffix and prefix for each type can be found below:
+
+* Integer Literals. (https://en.cppreference.com/w/cpp/language/integer_literal)
+* Float Literals. (https://en.cppreference.com/w/cpp/language/floating_literal)
+* Char Literals. (https://en.cppreference.com/w/cpp/language/character_literal)
+* String Literals. (https://en.cppreference.com/w/cpp/language/string_literal)

@@ -34,11 +34,6 @@ url = "tags/"
 weight = 3
 
 [[menu.nav]]
-name = "Categories"
-url = "categories/"
-weight = 4
-
-[[menu.nav]]
 name = "RSS"
 url = "index.xml"
-weight = 5
+weight = 4

@@ -3,7 +3,6 @@ title = "Some C++ Notes"
 date = "2023-07-16"
 author = "Xiahua Liu"
 tags = ["C++"]
-categories = ["C++"]
 +++
 
 Some random C++ notes I learned.

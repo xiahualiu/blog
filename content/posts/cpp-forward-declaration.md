@@ -3,7 +3,6 @@ title = "Forward Declaration in C++"
 date = "2023-08-02"
 author = "Xiahua Liu"
 tags = ["C++"]
-categories = ["C++"]
 +++
 
 Today I will talk about forward declaration and IWYU(include what you use).

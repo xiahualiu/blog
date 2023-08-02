@@ -12,9 +12,9 @@ Some random C++ notes I learned.
 
 Many people mistakingly think `gcc` searches `$PATH` for all `#include` preprocessors but it is actually not.
 
-`gcc` has two ways to look for the included files. 
+`gcc` has 3 ways to look for the included files. 
 
-One is searching inside the standard system directories, which is hardwared into the `gcc` itself for a specific system. You can force `gcc` to only search in this way with the angle-bracket form `#include<file>`.
+* Searching inside the standard system directories, which is hardwared into the `gcc` itself for a specific system. You can force `gcc` to only search in this way with the angle-bracket form `#include<file>`.
 
 You can use
 
@@ -30,7 +30,9 @@ gcc -v
 
 to learn about the standard system directories on your system.
 
-The other is looking for additional directories, this is done mostly by adding compile option `-Idir` to `gcc`, which cause `dir` to be searched **after** the current directory and **ahead** of the standard system directories.
+* Additional directories, this is done mostly by adding compile option `-Idir` to `gcc`, which cause `dir` to be searched **after** the current directory and **ahead** of the standard system directories.
+
+* The same directory that the source file is in.
 
 For more information on this topic, visit GNU document about it https://gcc.gnu.org/onlinedocs/cpp/Search-Path.html.
 
@@ -56,29 +58,57 @@ So in the real world practice, instead of using the above test conditions, use:
 #include<cmath>
 
 float a, b;
-if (std::abs(a-b) < TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
-if (std::abs(a-b) > TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
+if (std::fabs(a-b) < TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
+if (std::fabs(a-b) > TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
 if (a-b > TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
 if (a-b < TOLERANCE) {;} /* TOLERANCE could be a float rvalue */
 ```
 
-By specifying an extra `TOLERANCE` value, the float comparison can now be done safely and the comparing result will be predicatable according to the requirements.
+By specifying an extra `TOLERANCE` value, the float comparison can now be done safely and the comparing results will be predicatable according to the float precision requirements.
+
+A general version (using template):
+
+```cpp
+#include <iostream>
+#include <cmath>
+
+#define GLOBAL_EPSILON 0.001f
+
+template<typename FloatType>
+bool float_equal(const FloatType &f1, const FloatType &f2, const FloatType &eps);
+template<typename FloatType>
+bool float_equal(const FloatType &f1, const FloatType &f2);
+template<>
+bool float_equal<float>(const float &f1, const float &f2, const float &eps){
+    return std::fabs(f1-f2)<eps;
+}
+template<>
+bool float_equal<float>(const float &f1, const float &f2){
+    return std::fabs(f1-f2)<GLOBAL_EPSILON;
+}
+
+int main()
+{
+    std::cout << float_equal(123.0f, 123.0f) << std::endl;
+    return 0;
+}
+```
 
 ## Add Suffix (or Prefix) to Literals
 
 This is very important because if you don't the compiler only uses the default types (`int` for integer literals and `double` for float literals). This could cause unwanted results:
 
 ```cpp
-unsigned char a = 1;
-unsigned char b = 3;
+unsigned char a = 1u;
+unsigned char b = 3u;
 if (a+1 > b); // Compiler Warning: Compare unsigned to signed type.
 ```
 
 The compiler will warn you about comparing a unsigned value to a signed value because `a+1` will be `int` instead of `unsigned char` anymore.
 
 ```cpp
-unsigned char a = 1;
-unsigned char b = 3;
+unsigned char a = 1u;
+unsigned char b = 3u;
 if (a+1u > b); // No Compiler Warning, you did a great job!
 ```
 

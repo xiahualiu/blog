@@ -102,3 +102,9 @@ add_executable(main main.cpp foo.cpp)
 Forward declaration is very useful in almost all senarios in C++ and should be preferred over `#include` directive at any time.
 
 Even though `#include` is a traditional way to declare a lot of symbols from another file at once but in C++, header files can be really hard to process because of template.
+
+## Break Circular Include
+
+Because forward declaration doesn't need you to actually include, you can use it to break circular include in rare cases.
+
+However, when you see circular includes, it is usually a sign of bad software architecture design, so I suggest re-organize your software instead of using forward declaration as a workaround.

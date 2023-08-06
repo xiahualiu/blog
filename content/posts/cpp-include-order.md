@@ -33,7 +33,7 @@ You may think "wait, does it really matter?" in your head, but it is actually qu
 
 Consider the following example (a bad example):
 
-![](images/cpp_include_order.png)
+![](./cpp_include_order.png)
 
 Because `foo.h` didn't include all its dependancies, the users of `foo.h` are forced to include them in their code.
 

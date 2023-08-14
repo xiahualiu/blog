@@ -1,5 +1,5 @@
 +++
-title = "Some C++ Notes"
+title = "Some Random C++ Notes"
 date = "2023-07-16"
 author = "Xiahua Liu"
 tags = ["C++"]
